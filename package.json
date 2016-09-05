@@ -1,0 +1,31 @@
+{
+  "name": "indian-cities-database",
+  "version": "1.0.0",
+  "description": "Database of Indian cities and their states for node applications",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thatisuday/indian-cities-database.git"
+  },
+  "keywords": [
+    "database",
+    "cities",
+    "states",
+    "india"
+  ],
+  "author": "Uday Hiwarale <uhiwarale@gmail.com> (https://github.com/thatisuday)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/thatisuday/indian-cities-database/issues"
+  },
+  "homepage": "https://github.com/thatisuday/indian-cities-database#readme",
+  "dependencies": {
+    "async": "^2.0.1",
+    "lodash": "^4.15.0",
+    "mongoose": "^4.6.0",
+    "progress": "^1.1.8"
+  }
+}
