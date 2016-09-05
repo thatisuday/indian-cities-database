@@ -4,7 +4,7 @@
   "description": "Database of Indian cities and their states for node applications",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha test.js --timeout 60000"
   },
   "repository": {
     "type": "git",
@@ -27,5 +27,9 @@
     "lodash": "^4.15.0",
     "mongoose": "^4.6.0",
     "progress": "^1.1.8"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.0.2"
   }
 }

@@ -28,26 +28,27 @@ You can push all cities to mongodb database running on local instance
 
 ```
 const indianCitiesDatabase = require('indian-cities-database');
-indianCitiesDatabase.pushToDatabase(databaseName, collectionName);
+indianCitiesDatabase.pushToDatabase(databaseName, collectionName, callback); // all args are optional
 ```
 
-> Make sure you drop the collection (if you already have one) before populating it.
+> **WARNING** : pushToDatabase first drop the collection (if exists) before populating the database.
 
 Data model will look like below
 
 ```
 {
-	"_id"       : ObjectId("57cd97d226c3a143f02cfaab"),
-	"updatedAt" : ISODate("2016-09-05T16:05:38.905Z"),
-	"createdAt" : ISODate("2016-09-05T16:05:38.905Z"),
-	"cityId"    : "bodhan",
-	"cityName"  : "Bodhan",
-	"stateId"   : "andhra-pradesh",
-	"stateName" : "Andhra Pradesh",
-	"keywords"  : [
-		"bodhan"
-	],
-	"__v"       : 0
+	"_id"       : ObjectId("57cd99926c8f48577ce399cc"),
+    "updatedAt" : ISODate("2016-09-05T16:13:06.722Z"),
+    "createdAt" : ISODate("2016-09-05T16:13:06.722Z"),
+    "cityId"    : "port-blair",
+    "cityName"  : "Port Blair",
+    "stateId"   : "andaman-nicobar-islands",
+    "stateName" : "Andaman & Nicobar Islands",
+    "keywords"  : [
+        "port",
+        "blair"
+    ],
+    "__v"       : 0
 }
 
 ```

@@ -13,13 +13,14 @@ var bar = new progressBar('populating [:bar] :percent :etas', {
 });
 
 // export function to push database in mongodb database
-exports.pushToDatabase = function(database, collection){
+exports.pushToDatabase = function(database, collection, callback, options){
 	
 	// default storage
 	database = (database) 	? database : 'indian-cities';
 	collection = (collection) ? collection : 'cities';
 
 	// connect to local instance
+	mongoose.Promise = global.Promise;
 	mongoose.connect('mongodb://127.0.0.1/' + database);
 	
 	// catach error
@@ -76,36 +77,45 @@ exports.pushToDatabase = function(database, collection){
 		// create model
 		var City = mongoose.model('City', citySchema);
 
+		// drop old collection
 		// run loop on cities
-		// save each city in database
-		async.each(exports.cities, function(city, callback){
-			var cityMongoDoc = new City({
-				cityId 		: 	city.city,
-				cityName 	: 	city.city,
-				keywords 	: 	city.city,
-				stateId 	: 	city.state,
-				stateName 	: 	city.state
-			});
+		mongoose.connection.db.dropCollection(collection, function(err, result){
+			// save each city in database
+			async.each(exports.cities, function(city, cb){
+				var cityMongoDoc = new City({
+					cityId 		: 	city.city,
+					cityName 	: 	city.city,
+					keywords 	: 	city.city,
+					stateId 	: 	city.state,
+					stateName 	: 	city.state
+				});
 
-			cityMongoDoc.save(function(err){
-				if(err){
-					callback(new Error());
+				cityMongoDoc.save(function(err){
+					if(err){
+						cb(new Error());
+					}
+					else{
+						if(_.get(options, 'showOutput') != false){
+							bar.tick();
+						}
+						
+						cb(null);
+					}
+				});
+			}, function(err){
+				console.log(_.get(options, 'showOutput'));
+				if(_.get(options, 'showOutput') != false){
+					if(err){
+						console.log('Some error occured while saving the document');
+					}
+					else{
+						console.log('Done! Populated in : ' + database + ' -> ' + collection)
+					}
 				}
-				else{
-					bar.tick();
-					callback(null);
-				}
-			});
-		}, function(err){
-			if(err){
-				console.log('Some error occured while saving the document');
-			}
-			else{
-				console.log('Done! Populated in : ' + database + ' -> ' + collection)
-			}
 
-			// exit node process
-			process.exit(0);
+				// call callback
+				(callback) ? callback() : _.noop();
+			});
 		});
 	});
 }
