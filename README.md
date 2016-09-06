@@ -3,7 +3,7 @@ Database of Indian cities and their states for node applications.
 
 ***
 
-### Get list
+## Get list
 
 ```
 const indianCitiesDatabase = require('indian-cities-database');
@@ -21,6 +21,8 @@ var cities = indianCitiesDatabase.cities;
 	]
 */
 ```
+
+***
 
 ## Automatically populate local mongodb
 
@@ -56,15 +58,37 @@ Data model will look like below
 
 ***
 
-Data fetched from [gist](https://gist.github.com/ankitnetwork18/4509792) by [ankitnetwork18](https://github.com/ankitnetwork18) and other websites
+## Querying
+
+Once you have the database, you can perform search the way you want using mongodb native module or mongojs. But if you wish to use mongoose, then you must need a `schema` which you can import like
+
+```
+const indianCitiesDatabase = require('indian-cities-database');
+var citySchema = indianCitiesDatabase.citySchema;
+citySchema.set('collection', 'my_cities_collection');
+
+// create model to query
+var myCity = mongoose.model('myCity', citySchema);
+myCity.find({}, callback);
+```
+
+> Do not populate cities database (using `pushToDatabase` method) in your api code unless needed. While population, this module creates new db connection using mongoose. This may lead to db connection collision. Better, you first populate the db by simple execution `node populate.js` and then create custom model as above.
 
 ***
 
-To add more cities, create an issue and paste cities in following array format
+## Contribute
+
+To add more cities, create an issue and paste cities in following array format.
 ```
 [
 	{city:'Kolhapur', state:'Maharashtra'},
 	{city:'Port Blair', state:'Andaman & Nicobar Islands'},
 	{city:'Adilabad', state:'Andhra Pradesh'},
 ]
-````
+```
+
+***
+
+## Data source
+
+Data fetched from [gist](https://gist.github.com/ankitnetwork18/4509792) by [ankitnetwork18](https://github.com/ankitnetwork18) and other websites.

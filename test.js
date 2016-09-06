@@ -14,7 +14,7 @@ describe('Main', function(){
 		});
 	});
 
-	it('show return ' + indianCitiesDatabase.cities.length + ' entries in database', function(done){
+	it('should return ' + indianCitiesDatabase.cities.length + ' entries in database', function(done){
 		// Import mongoose city model
 		var City = mongoose.model('City');
 
