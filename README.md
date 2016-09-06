@@ -1,4 +1,5 @@
-# Indian Cities Database [![Build Status](https://travis-ci.org/thatisuday/indian-cities-database.svg?branch=master)](https://travis-ci.org/thatisuday/indian-cities-database) ![dependencies](https://david-dm.org/thatisuday/indian-cities-database.svg) [![npm version](https://badge.fury.io/js/indian-cities-database.svg)](https://badge.fury.io/js/indian-cities-database)
+# Indian Cities Database [![Build Status](https://img.shields.io/travis/thatisuday/indian-cities-database.svg?style=flat-square)](https://travis-ci.org/thatisuday/indian-cities-database) [![npm downloads](https://img.shields.io/npm/dt/indian-cities-database.svg?style=flat-square)](https://www.npmjs.com/package/indian-cities-database) [![npm downloads](https://img.shields.io/npm/v/indian-cities-database.svg?style=flat-square)](https://www.npmjs.com/package/indian-cities-database) [![npm downloads](https://img.shields.io/david/thatisuday/indian-cities-database.svg?style=flat-square)](https://www.npmjs.com/package/indian-cities-database)
+
 Database of Indian cities and their states for node applications.
 
 ***

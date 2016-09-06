@@ -1,6 +1,6 @@
 {
   "name": "indian-cities-database",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Database of Indian cities and their states for node applications",
   "main": "index.js",
   "scripts": {
