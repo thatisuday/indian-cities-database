@@ -48,7 +48,7 @@ exports.pushToDatabase = function(database, collection, callback, options){
 			// save each city in database
 			async.each(exports.cities, function(city, cb){
 				var cityMongoDoc = new City({
-					cityId 		: 	city.city,
+					cityId 		: 	city.city+city.state,
 					cityName 	: 	city.city,
 					keywords 	: 	city.city,
 					stateId 	: 	city.state,
