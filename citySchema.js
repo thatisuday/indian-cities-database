@@ -17,9 +17,7 @@ var citySchema = new mongoose.Schema({
 	},
 	cityName : {
 		type : String,
-		unique : true,
 		trim : true,
-		index: true
 	},
 	keywords : {
 		type : [String],
